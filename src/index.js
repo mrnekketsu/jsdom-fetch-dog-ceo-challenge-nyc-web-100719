@@ -2,6 +2,7 @@ console.log('%c HI', 'color: firebrick')
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
 const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 
+//fetch to get dog images. calls renderDogImages in second then
 function fetchDogImages() {
     fetch(imgUrl)
         .then(function(resp) {
@@ -12,6 +13,11 @@ function fetchDogImages() {
         })
 }
 
+/*
+fetch to get dog breeds. calls addBreedstoUl and then gives them red text ability and 
+sort by first letter
+
+*/
 function fetchBreeds(){
     fetch(breedUrl)
         .then(function(resp){
@@ -39,7 +45,8 @@ function fetchBreeds(){
             })
         })
 }
-    
+
+//display dogs function to either show or hide dog breeds
 function displayDogs(e, breedArr){
     breedArr.forEach(function(breed){
         if (breed.innerText[0] === e.target.value){
@@ -72,7 +79,7 @@ function addBreedsToUl(json){
     });   
 }
 
-
+//after content is loaded, call fetchDogImages and fetchBreeds
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Doc has been loaded")
     
